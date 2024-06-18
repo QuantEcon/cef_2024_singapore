@@ -120,11 +120,10 @@
 \renewcommand{\theFancyVerbLine}{\sffamily
     \textcolor[rgb]{0.5,0.5,1.0}{\scriptsize {\arabic{FancyVerbLine}}}}
 
-\newcommand{\navy}[1]{\textcolor{Blue}{\bf #1}}
+\newcommand{\navy}[1]{\textcolor{DarkBlue}{\bf #1}}
 \newcommand{\brown}[1]{\textcolor{Brown}{\sf #1}}
 \newcommand{\green}[1]{\textcolor{ForestGreen}{\sf #1}}
 \newcommand{\blue}[1]{\textcolor{Blue}{\sf #1}}
-\newcommand{\navymth}[1]{\textcolor{Blue}{#1}}
 \newcommand{\emp}[1]{\textcolor{DarkOrange1}{\bf #1}}
 \newcommand{\red}[1]{\textcolor{Red}{\bf #1}}
 
@@ -223,6 +222,34 @@
 
 
 
+\begin{frame}
+    \frametitle{Topics}
+
+    \begin{itemize}
+        \item Types of programming languages
+    \vspace{0.5em}
+        \item Vectorization vs JIT compilers
+    \vspace{0.5em}
+        \item Motivation for JAX
+    \vspace{0.5em}
+        \item Intro to JAX
+    \vspace{0.5em}
+        \item JAX for DP
+    \end{itemize}
+
+
+    \vspace{0.5em}
+    \vspace{0.5em}
+    \vspace{0.5em}
+    Target audience: people who are new to / curious about JAX
+    \vspace{0.5em}
+    \vspace{0.5em}
+    \vspace{0.5em}
+
+    Please feel free to question / debate / share your experiences
+
+\end{frame}
+
 
 \begin{frame}
     
@@ -265,65 +292,25 @@
 \end{frame}
 
 
-\begin{frame}
-    \frametitle{Topics}
-
-    \begin{itemize}
-        \item Types of programming languages
-    \vspace{0.5em}
-    \vspace{0.5em}
-        \item Vectorization vs JIT compilers
-    \vspace{0.5em}
-    \vspace{0.5em}
-        \item Motivation for JAX
-    \end{itemize}
-\end{frame}
-
-
 
 \begin{frame}
     \frametitle{Old school: static types \& AOT compilers}
 
-    Typical languages: \brown{Fortran / C / C++ }
-
-        \vspace{0.5em}
-        \vspace{0.5em}
-    \Eg Suppose we want to compute the sequence
+    \Eg Consider the Solow model
     %
     \begin{equation*}
         k_{t+1} = s k_t^\alpha + (1 - \delta) k_t
+        \qquad \text{with } k_0 \text{ given}
     \end{equation*}
     %
-    from some given $k_0$ 
+
 
         \vspace{0.5em}
         \vspace{0.5em}
+        \vspace{0.5em}
 
-    Let's write a function that returns the last $k_t$
+    Fortran code:
 
-
-\end{frame}
-
-
-\begin{frame}[fragile]
-    
-    \begin{minted}{c}
-#include <stdio.h>
-#include <math.h>
-
-int main() {
-    double k = 0.2;
-    double alpha = 0.4;
-    double s = 0.3;
-    double delta = 0.1;
-    int i;
-    int n = 1000;
-    for (i = 0; i < n; i++) {
-        k = s * pow(k, alpha) + (1 - delta) * k;
-    }
-    printf("k = %f\n", k);
-}
-    \end{minted}
 
 \end{frame}
 
@@ -356,7 +343,11 @@ end program main
 
 \begin{frame}
 
-    \navy{Pros of low-level languages}
+    Relative merits of Fortran / C / other static type AOT compiled languages?
+
+    \vspace{0.5em}
+    \vspace{0.5em}
+    \navy{Pros}
 
     \begin{itemize}
         \item fast loops / arithmetic
@@ -421,6 +412,8 @@ print(k)
     \pause
     \vspace{0.5em}
     \vspace{0.5em}
+    \vspace{0.5em}
+    \vspace{0.5em}
     Why is pure Python slow?
 
 
@@ -431,26 +424,25 @@ print(k)
     \frametitle{Problem 1: Type checking}
 
     \begin{minted}{python}
-# Ints
 x, y = 1, 2
-z = x + y       # z = 3
+z = x + y       
 
-# Floats
 x, y = 1.0, 2.0
-z = x + y       # z = 3.0
+z = x + y      
 
-# Strings
 x, y = 'foo', 'bar'
-z = x + y       # z = 'foobar'
+z = x + y     
     \end{minted}
 
+    \vspace{0.5em}
+    \vspace{0.5em}
 
+How does Python know which operation to perform?
 
 \end{frame}
 
 
 \begin{frame}[fragile]
-    How does Python know which operation to perform?
 
     Answer: Python checks the type of the objects first
 
@@ -476,7 +468,7 @@ str
 
     \begin{minted}{python}
 >>> import sys
->>> x = [2.56, 3.21]
+>>> x = [1.0, 2.0]
 >>> sys.getsizeof(x) * 8      # number of bits
 576                           # whaaaat???
     \end{minted}
@@ -565,6 +557,8 @@ end
 
 solow(0.2)
     \end{minted}
+
+    Function \texttt{solow} is efficiently JIT compiled after the first call
 
 \end{frame}
 
@@ -660,33 +654,8 @@ solow(0.2)
         \item etc.
     \end{itemize}
 
-    \pause
-        \vspace{0.5em}
-        \vspace{0.5em}
-        \vspace{0.5em}
-        \vspace{0.5em}
-        \navy{Key point:} vast investment in AI is changing the production
-        possibility frontier for \emp{all} scientific coders
-
 \end{frame}
 
-
-\begin{frame}
-    
-
-    Platforms / libraries
-
-    \begin{itemize}
-        \item PyTorch (ChatGPT, LLaMA 3, Github Copilot)
-        \vspace{0.5em}
-        \item Google JAX (Gemini)
-        \vspace{0.5em}
-        \item Tensorflow? 
-        \vspace{0.5em}
-        \item Mojo (by Modular)?
-    \end{itemize}
-
-\end{frame}
 
 
 \begin{frame}
@@ -868,17 +837,22 @@ grad_loss = jit(grad(loss))  # Now use gradient descent
 
 
 \begin{frame}
+    \frametitle{JAX for economists}
+
+    I do mathematical modeling / optimization / simulation
     
-    What I need: software that will parallelize \textbf{for me}
+    \vspace{0.5em}
+
+    My wishlist:
 
     \begin{itemize}
-        \item automated intelligent parallelization
+        \item \underline{automated} parallelization
     \vspace{0.5em}
-        \item JIT compiled  --- flexible
+        \item JIT compiler 
     \vspace{0.5em}
         \item integrated autodiff
     \vspace{0.5em}
-        \item automatically supports most CPUs / GPUs / TPUs / etc.
+        \item automatically / transparently supports CPUs / GPUs / TPUs 
     \end{itemize}
 
     \vspace{0.5em}
