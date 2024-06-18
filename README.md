@@ -6,7 +6,7 @@
 
 This is the homepage for the [QuantEcon](https://quantecon.org/) workshop on
 dynamic programming with Google JAX to be held at the Computational Economics
-and Finance Conference in June 2024.
+and Finance Conference at NTU in June 2024.
 
 
 
@@ -16,11 +16,10 @@ and Finance Conference in June 2024.
 
 ## Topics
 
-* What's JAX and where does it fit in?
+* What's JAX?
 * Introduction to JAX 
 * Automatic differentiation
 * Dynamic programming: theory and algorithms
-* Optimal savings -- methods and algorithms
 
 ## Notes
 
