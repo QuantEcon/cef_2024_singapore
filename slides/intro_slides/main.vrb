@@ -1,0 +1,20 @@
+
+    \vspace{-1em}
+    \begin{minted}{python}
+import jax.numpy as jnp
+from jax import grad, jit
+
+def f(θ, x):
+  for W, b in θ:
+    w = W @ x + b
+    x = jnp.tanh(w)
+  return x
+
+def loss(θ, x, y):
+  return jnp.sum((y - f(θ, x))**2)
+
+grad_loss = jit(grad(loss))  # Now use gradient descent
+    \end{minted}
+
+    {\footnotesize Source: JAX readthedocs}
+
