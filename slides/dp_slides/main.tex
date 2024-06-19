@@ -372,7 +372,7 @@
             \left\{
                 r(x, a)
                 + \beta
-                \sum_{x' \in \Xsf} v(x') P(x, a, x')
+                \sum_{x'} v(x') P(x, a, x')
             \right\}
     \end{equation*}
     %
@@ -575,10 +575,6 @@
     %
     for all $x \in \Xsf$
 
-    \vspace{0.5em}
-    \vspace{0.5em}
-    \vspace{0.5em}
-    \Ex Prove: at least one $v$-greedy policy exists in $\Sigma$
 
 
 \end{frame}
@@ -617,35 +613,15 @@
     \frametitle{Optimality}
 
     \vspace{0.5em}
-    The \navy{value function} is defined by
-    %
-    \begin{equation*}
-        v^*(x) := \max_{\sigma \in \Sigma} v_\sigma(x)
-        \qquad (x \in \Xsf)
-    \end{equation*}
-    %
+    The \navy{value function} is defined by $v^*(x) := \max_{\sigma \in \Sigma} v_\sigma(x)$
 
     \vspace{0.5em}
-    \vspace{0.5em}
-    A policy $\sigma \in \Sigma$ is called \navy{optimal} if
-    %
-    \begin{equation*}
-        v_\sigma = v^*
-    \end{equation*}
-
-\end{frame}
-
-
-
-
-\begin{frame}\label{slide:mdp_result}
-
-    Standard theory (Bellman, Denardo, Blackwell)
+    A policy $\sigma \in \Sigma$ is called \navy{optimal} if $v_\sigma = v^*$
 
         \vspace{0.5em}
         \vspace{0.5em}
     \begin{block}{}
-        {\bf Theorem.} For the DP model described above,
+        {\bf Theorem (Bellman, Denardo).} For the DP model described above,
         %
         \vspace{0.5em}
         \begin{enumerate}
@@ -671,11 +647,17 @@
     \frametitle{Algorithms}
 
 
+    The three most important algorithms in DP:
+
+        \vspace{0.5em}
+        \vspace{0.5em}
     %
     \begin{enumerate}
-        \item Value function iteration (HPI)
+        \item Value function iteration (VFI)
+        \vspace{0.5em}
         \vspace{0.5em}
         \item Howard policy iteration (HPI) 
+        \vspace{0.5em}
         \vspace{0.5em}
         \item Optimistic policy iteration (OPI)
     \end{enumerate}
@@ -760,6 +742,7 @@
     {\small
     \begin{algorithm}[H]
         \DontPrintSemicolon
+        \vspace{0.3em}
         input $\sigma \in \Sigma$ \;
     \vspace{0.3em}
         $v_0 \leftarrow v_\sigma$ and $k \leftarrow 0$  \;
@@ -777,7 +760,7 @@
         }
         \Return{$\sigma_k$}
     \vspace{0.3em}
-        \caption{Howard policy iteration for MDPs}
+        \caption{HPI for MDPs}
     \end{algorithm}
     }
 
@@ -859,6 +842,7 @@
     {\small
     \begin{algorithm}[H]
         \DontPrintSemicolon
+        \vspace{0.3em}
         input $v_0 \in \RR^n$\;
         \vspace{0.3em}
         input $\tau > 0$ and $m \in \NN$, a step size \;
@@ -879,7 +863,7 @@
         }
         \vspace{0.3em}
         \Return{$\sigma_k$}
-        \caption{Optimistic policy iteration for MDPs}
+        \caption{OPI for MDPs}
     \end{algorithm}
     }
 
@@ -921,7 +905,7 @@
     \begin{itemize}
         \item parallelization favors HPI -- small number of expensive steps
         \vspace{0.5em}
-        \item OFI is simple and dominates VFI for many values of $m$
+        \item OPI is simple and dominates VFI for many values of $m$
         \vspace{0.5em}
         \item VFI works well when $\beta$ is small and optimization is cheap
     \end{itemize}

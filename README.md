@@ -25,6 +25,6 @@ and Finance Conference at NTU in June 2024.
 
 All participants should bring laptop computers.  
 
-Some background on algorithms see [Dynamic Programming](https://dp.quantecon.org).
+For background on algos see [Dynamic Programming](https://dp.quantecon.org).
 
 

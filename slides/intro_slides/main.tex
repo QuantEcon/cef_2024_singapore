@@ -205,7 +205,7 @@
 
 \title{Dynamic Programming with Google JAX}
 
-\subtitle{CEF 2024}
+%\subtitle{CEF 2024}
 
 
 \author{John Stachurski}
@@ -226,15 +226,13 @@
     \frametitle{Topics}
 
     \begin{itemize}
-        \item Types of programming languages
+        \item 4 minute history of scientific computing
     \vspace{0.5em}
-        \item Vectorization vs JIT compilers
+        \item What's JAX?
     \vspace{0.5em}
-        \item Motivation for JAX
+        \item Intro to JAX  -- hands on
     \vspace{0.5em}
-        \item Intro to JAX
-    \vspace{0.5em}
-        \item JAX for DP
+        \item JAX for DP  -- hands on
     \end{itemize}
 
 
@@ -321,19 +319,19 @@
     
     \begin{minted}{fortran}
 program main
- implicit none
- integer, parameter :: dp=kind(0.d0)                          
- integer :: n=1000
- real(dp) :: s=0.3_dp
- real(dp) :: a=1.0_dp
- real(dp) :: delta=0.1_dp
- real(dp) :: alpha=0.4_dp
- real(dp) :: k=0.2_dp
- integer :: i
- do i = 1, n - 1                                                
-  k = a * s * k**alpha + (1 - delta) * k
- end do
- print *,'k = ', k
+    implicit none
+    integer, parameter :: dp=kind(0.d0)                          
+    integer  :: n=1000
+    real(dp) :: s=0.3_dp
+    real(dp) :: a=1.0_dp
+    real(dp) :: delta=0.1_dp
+    real(dp) :: alpha=0.4_dp
+    real(dp) :: k=0.2_dp
+    integer  :: i
+    do i = 1, n - 1                                                
+        k = a * s * k**alpha + (1 - delta) * k
+    end do
+    print *,'k = ', k
 end program main
     \end{minted}
 
@@ -343,7 +341,7 @@ end program main
 
 \begin{frame}
 
-    Relative merits of Fortran / C / other static type AOT compiled languages?
+    Relative merits?
 
     \vspace{0.5em}
     \vspace{0.5em}
@@ -406,7 +404,7 @@ print(k)
     Cons
 
     \begin{itemize}
-        \item slow loops / arithmetic
+        \item slow loops / arithmetic  (in \underline{pure} Python)
     \end{itemize}
 
     \pause
@@ -522,6 +520,7 @@ str
     \navy{Pros}
 
     \begin{itemize}
+        \item fast array operations
         \item high interactivity 
     \end{itemize}
 
@@ -585,6 +584,21 @@ solow(0.2)
 
 
 \begin{frame}
+    
+    Notice that most discussion so far is about execution speed on a
+    \navy{single} thread...
+
+
+    \vspace{0.5em}
+    \vspace{0.5em}
+    \vspace{0.5em}
+
+
+    Later we'll discuss parallelization
+
+\end{frame}
+
+\begin{frame}
 
     Some trends: 
 
@@ -623,8 +637,6 @@ solow(0.2)
         \vspace{0.5em}
         \item speech recognition, translation
         \vspace{0.5em}
-        \item scientific knowledge discovery
-        \vspace{0.5em}
         \item forecasting and prediction 
         \vspace{0.5em}
         \item generative AI
@@ -661,8 +673,7 @@ solow(0.2)
 \begin{frame}
     \frametitle{Deep learning in two slides}
     
-    Supervised deep learning: find a good approximation to an unknown functional
-    relationship
+    We postulate a relationship between inputs and outputs
     %
     \begin{equation*}
         y = f(x)
@@ -692,20 +703,19 @@ solow(0.2)
 
 \begin{frame}
 
-    Training: minimize the empirical loss
+    Training: given parametric class $\{f_\theta\}_{\theta \in \Theta}$,
+    minimize the loss
     %
     \begin{equation*}
         \ell(\theta) := \sum_{i=1}^n (y_i - f_\theta(x_i))^2
         \quad \st \quad \theta \in \Theta
     \end{equation*}
-
-
-    \pause
-    But what is $\{f_\theta\}_{\theta \in \Theta}$?
+    %
 
     \pause
     \vspace{0.5em}
-    In the case of ANNs, we consider all $f_\theta$ having the form
+    \vspace{0.5em}
+    In the case of ANNs, 
     %
     \begin{equation*}
         f_\theta
@@ -839,13 +849,30 @@ grad_loss = jit(grad(loss))  # Now use gradient descent
 \begin{frame}
     \frametitle{JAX for economists}
 
+    JAX is obviously useful if you do deep learning
+    \vspace{0.5em}
+    \vspace{0.5em}
+
+    But what about me?
+
+    \vspace{0.5em}
+    \vspace{0.5em}
+    \vspace{0.5em}
     I do mathematical modeling / optimization / simulation
     
-    \vspace{0.5em}
+
+\end{frame}
+
+
+
+\begin{frame}
+    
 
     My wishlist:
 
     \begin{itemize}
+        \item exposes low level operations 
+    \vspace{0.5em}
         \item \underline{automated} parallelization
     \vspace{0.5em}
         \item JIT compiler 
@@ -859,9 +886,9 @@ grad_loss = jit(grad(loss))  # Now use gradient descent
     \vspace{0.5em}
     JAX ticks these boxes
 
+
+
 \end{frame}
-
-
 
 
 
