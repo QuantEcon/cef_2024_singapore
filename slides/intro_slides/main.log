@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.7)  19 JUN 2024 14:18
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.7)  19 JUN 2024 14:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1165,32 +1165,7 @@ LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
 (Font)              scaled to size 8.89018pt on input line 263.
  [3
 
-]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 290.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.60081pt on input line 290.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 290.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 290.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.59918pt on input line 290.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 290.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 290.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 290.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 290.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 290.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 290.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 290.
- [4
+] [4
 
 ] [5
 
@@ -1295,23 +1270,23 @@ File: pvr.png Graphic file (type bmp)
 ] [25
 
 ]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 701.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 702.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 
 LaTeX Font Warning: Font shape `U/bbm/m/n' in size <5.475> not available
-(Font)              size <5> substituted on input line 701.
+(Font)              size <5> substituted on input line 702.
 
 [26
 
 ]
-LaTeX Font Info:    Trying to load font information for TU+ppl on input line 734.
-LaTeX Font Info:    No file TUppl.fd. on input line 734.
+LaTeX Font Info:    Trying to load font information for TU+ppl on input line 735.
+LaTeX Font Info:    No file TUppl.fd. on input line 735.
 
 
 LaTeX Font Warning: Font shape `TU/ppl/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 734.
+(Font)              using `TU/lmr/m/n' instead on input line 735.
 
 [27
 
@@ -1336,10 +1311,12 @@ File: dgx.png Graphic file (type bmp)
 
 ] [33
 
+] [34
+
 ]
 File: jax.png Graphic file (type bmp)
 <jax.png>
- [34
+ [35
 
 ]
 \openout4 = `main.vrb'.
@@ -1347,11 +1324,11 @@ File: jax.png Graphic file (type bmp)
  (./main.vrb
 \openout5 = `main.pyg'.
 
- (./_minted-main/C8F1D72A0F9FDF5910ADEA3EAD6DBD1A4281FAF47C70E7389F15E7D045E0286E.pygtex)) [35
-
-] [36
+ (./_minted-main/C8F1D72A0F9FDF5910ADEA3EAD6DBD1A4281FAF47C70E7389F15E7D045E0286E.pygtex)) [36
 
 ] [37
+
+] [38
 
 ]
 \tf@nav=\write8
@@ -1382,12 +1359,12 @@ runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 31336 strings out of 474706
- 644232 string characters out of 5756289
+ 31275 strings out of 474706
+ 642341 string characters out of 5756289
  1931403 words of memory out of 5000000
- 52880 multiletter control sequences out of 15000+600000
- 569242 words of font info for 116 fonts, out of 8000000 for 9000
+ 52829 multiletter control sequences out of 15000+600000
+ 564309 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,15n,123p,417b,575s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (37 pages).
+Output written on main.pdf (38 pages).

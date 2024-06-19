@@ -269,10 +269,6 @@
     \begin{itemize}
         \item Python programmers?
     \vspace{0.5em}
-            \begin{itemize}
-                \item NumPy?  Numba?  PyTorch? JAX?
-            \end{itemize}
-    \vspace{0.5em}
         \item Julia?
     \vspace{0.5em}
         \item MATLAB?
@@ -285,7 +281,12 @@
 
     \vspace{0.5em}
     \vspace{0.5em}
-    Regular GPU users?
+
+    \begin{itemize}
+        \item JAX users?
+    \vspace{0.5em}
+        \item Regular GPU users?
+    \end{itemize}
     
 \end{frame}
 
@@ -294,7 +295,7 @@
 \begin{frame}
     \frametitle{Old school: static types \& AOT compilers}
 
-    \Eg Consider the Solow model
+    \Eg Consider 
     %
     \begin{equation*}
         k_{t+1} = s k_t^\alpha + (1 - \delta) k_t
@@ -782,6 +783,15 @@ solow(0.2)
     ``NVIDIA supercomputers are the factories of the AI industrial
     revolution.'' -- Jensen Huang
 
+
+    \vspace{1em}
+    \vspace{1em}
+    \vspace{1em}
+
+    \begin{itemize}
+        \item How many GPUs did OpenAI use to train ChatGPT 4?
+    \end{itemize}
+
 \end{frame}
 
 
@@ -795,14 +805,24 @@ solow(0.2)
     \begin{itemize}
         \item automatic differentiation (for \underline{gradient} descent)
         \vspace{0.5em}
-        \item parallelization (GPUs! --- how many?)
+        \vspace{0.5em}
+        \item parallelization --- exploit parallel hardware!
+        \vspace{0.5em}
         \vspace{0.5em}
         \item Compilers / JIT-compilers
     \end{itemize}
 
+    \pause
+        \vspace{0.5em}
+
         \vspace{0.5em}
         \vspace{0.5em}
     Crucially, these components must be \underline{well integrated}
+
+        \vspace{0.5em}
+        \vspace{0.5em}
+
+    One library with these features is...
 
 
 \end{frame}
@@ -853,7 +873,7 @@ grad_loss = jit(grad(loss))  # Now use gradient descent
     \vspace{0.5em}
     \vspace{0.5em}
 
-    But what about me?
+    But what about \underline{me}?
 
     \vspace{0.5em}
     \vspace{0.5em}
@@ -872,14 +892,14 @@ grad_loss = jit(grad(loss))  # Now use gradient descent
 
     \begin{itemize}
         \item exposes low level operations 
-    \vspace{0.5em}
+        \vspace{0.5em}
         \item \underline{automated} parallelization
-    \vspace{0.5em}
+        \vspace{0.5em}
         \item JIT compiler 
-    \vspace{0.5em}
+        \vspace{0.5em}
         \item integrated autodiff
-    \vspace{0.5em}
-        \item automatically / transparently supports CPUs / GPUs / TPUs 
+        \vspace{0.5em}
+        \item \underline{automatically} / transparently supports CPUs / GPUs / TPUs 
     \end{itemize}
 
     \vspace{0.5em}
